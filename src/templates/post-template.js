@@ -11,6 +11,29 @@ const PostTemplate = () => {
   return <h2>post template</h2>
 }
 
+export const query = graphql`
+  {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
+      frontmatter {
+        author
+        category
+        title
+        slug
+        readTime
+        date(formatString: "MMMM Do, YYYY")
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+      body
+    }
+  }
+`
+
 const Wrapper = styled.section`
   width: 85vw;
   max-width: 1100px;
