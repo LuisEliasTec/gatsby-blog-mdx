@@ -12,7 +12,7 @@ const PostTemplate = () => {
 }
 
 export const query = graphql`
-  {
+  query GetSinglePost($slug:String){
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         author
